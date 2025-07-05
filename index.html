@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Tic Tac Toe</h1>
+        
+        <!-- Game Mode Selection -->
+        <div class="game-modes" id="gameModes">
+            <h2>Choose Your Game Mode</h2>
+            <div class="mode-buttons">
+                <button class="mode-btn" onclick="selectGameMode('ai')">
+                    🤖 Play vs AI
+                </button>
+                <button class="mode-btn" onclick="selectGameMode('human')">
+                    👥 Two Players
+                </button>
+            </div>
+        </div>
+
+        <!-- AI Difficulty Selection -->
+        <div class="difficulty-screen hidden" id="difficultyScreen">
+            <h2>Choose AI Difficulty</h2>
+            <div class="difficulty-buttons">
+                <button class="diff-btn easy" onclick="startAIGame('easy')">
+                    😊 Easy
+                    <span>AI makes random moves</span>
+                </button>
+                <button class="diff-btn medium" onclick="startAIGame('medium')">
+                    😐 Medium  
+                    <span>AI is somewhat smart</span>
+                </button>
+                <button class="diff-btn hard" onclick="startAIGame('hard')">
+                    😈 Hard
+                    <span>AI never loses</span>
+                </button>
+            </div>
+            <button class="back-btn" onclick="goBackToModes()">← Back</button>
+        </div>
+
+        <!-- Game Board -->
+        <div class="game-board hidden" id="gameBoard">
+            <div class="game-info">
+                <div class="players">
+                    <div class="player" id="player1">
+                        <span class="symbol">❌</span>
+                        <span class="name" id="player1Name">Player 1</span>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="player" id="player2">
+                        <span class="symbol">⭕</span>
+                        <span class="name" id="player2Name">Player 2</span>
+                    </div>
+                </div>
+                
+                <div class="turn-indicator" id="turnIndicator">
+                    Player 1's Turn
+                </div>
+
+                <div class="score">
+                    <div class="score-item">
+                        <span id="score1">0</span>
+                        <small>Player 1</small>
+                    </div>
+                    <div class="score-item">
+                        <span id="scoreDraw">0</span>
+                        <small>Draws</small>
+                    </div>
+                    <div class="score-item">
+                        <span id="score2">0</span>
+                        <small>Player 2</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The actual tic tac toe grid -->
+            <div class="grid">
+                <div class="cell" onclick="makeMove(0)"></div>
+                <div class="cell" onclick="makeMove(1)"></div>
+                <div class="cell" onclick="makeMove(2)"></div>
+                <div class="cell" onclick="makeMove(3)"></div>
+                <div class="cell" onclick="makeMove(4)"></div>
+                <div class="cell" onclick="makeMove(5)"></div>
+                <div class="cell" onclick="makeMove(6)"></div>
+                <div class="cell" onclick="makeMove(7)"></div>
+                <div class="cell" onclick="makeMove(8)"></div>
+            </div>
+
+            <div class="game-controls">
+                <button onclick="restartGame()">🔄 Restart</button>
+                <button onclick="newGame()">🆕 New Game</button>
+                <button onclick="goHome()">🏠 Home</button>
+            </div>
+        </div>
+
+        <!-- Game Result Popup -->
+        <div class="popup hidden" id="gamePopup">
+            <div class="popup-content">
+                <div class="result-emoji" id="resultEmoji">🏆</div>
+                <h2 id="resultTitle">You Win!</h2>
+                <p id="resultMessage">Great job!</p>
+                <div class="popup-buttons">
+                    <button onclick="playAgain()">Play Again</button>
+                    <button onclick="goHome()">Main Menu</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Thinking Animation -->
+        <div class="ai-thinking hidden" id="aiThinking">
+            <div class="spinner"></div>
+            <p>AI is thinking...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
